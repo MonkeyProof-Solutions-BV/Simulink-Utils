@@ -6,7 +6,7 @@ classdef Customizer < handle
     methods (Static)
         
         function childrenFcns = getCustomizeMethods(customizers)
-            % Utility function to create childrenFcns out of the Customizers 
+            % Utility function to create childrenFcns out of the Customizers
             % for custom menu schema
             
             childrenFcns = {};
@@ -32,5 +32,9 @@ classdef Customizer < handle
             % Remove the last 'separator'
             childrenFcns(end) = [];
         end
+    end
+    
+    methods (Static, Abstract)
+        setFilters(cm)
     end
 end

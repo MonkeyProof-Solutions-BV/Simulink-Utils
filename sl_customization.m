@@ -7,6 +7,10 @@ function sl_customization(cm)
 cm.addCustomMenuFcn('Simulink:MenuBar', @getCustomSimulinkMenu);
 cm.addCustomMenuFcn('Simulink:ContextMenu', @getCustomSimulinkContext);
 
+styleguide.Customizer.setFilters(cm);
+blocks.Customizer.setFilters(cm);
+signals.Customizer.setFilters(cm);
+
 end
 
 %% Menu Bar

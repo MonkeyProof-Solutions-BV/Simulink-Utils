@@ -4,9 +4,10 @@
 classdef Customizer < Customizer
     
     methods (Static)
-        
         % Customizing Methods
         schema = makeConstantsOrange(callbackInfo)
         
+        % Implement Abstract
+        setFilters(cm)
     end
 end
