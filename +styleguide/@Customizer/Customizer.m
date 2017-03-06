@@ -7,6 +7,7 @@ classdef Customizer < Customizer
         % Customizing Methods
         schema = makeConstantsOrange(callbackInfo)
         schema = resetColors(callbackInfo)
+        schema = fixHighlights(callbackInfo)
         
         % Implement Abstract
         setFilters(cm)
