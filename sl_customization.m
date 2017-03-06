@@ -9,6 +9,9 @@ cm.addCustomMenuFcn('Simulink:MenuBar', @getCustomSimulinkMenu);
 % Register custom menu in the Simulink context menu.
 cm.addCustomMenuFcn('Simulink:ContextMenu', @getCustomSimulinkContext);
 
+% Register custom menu in the Stateflow Editor's menu bar.
+cm.addCustomMenuFcn('Stateflow:MenuBar', @getCustomStateflowMenu);
+
 % Add custom filters
 styleguide.Customizer.setFilters(cm);
 blocks.Customizer.setFilters(cm);
@@ -16,7 +19,7 @@ signals.Customizer.setFilters(cm);
 
 end
 
-%% Menu Bar
+%% Simulink Menu Bar
 function schemaFcns = getCustomSimulinkMenu(callbackInfo) %#ok<INUSD>
 % Custom menu function: returns schema functions
 
@@ -44,7 +47,7 @@ schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
 
 end
 
-%% Context Menu
+%% Simulink Context Menu
 function schemaFcns = getCustomSimulinkContext(callbackInfo) %#ok<INUSD>
 % Custom context menu function: returns schema functions
 
@@ -66,6 +69,34 @@ schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
 customizers             = {blocks.Customizer(), signals.Customizer()};
+
+% Generate childrenFcns for schema
+schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
+
+end
+
+%% Stateflow Menu Bar
+function schemaFcns = getCustomStateflowMenu(callbackInfo) %#ok<INUSD>
+% Custom menu function: returns schema functions
+
+schemaFcns = {@customSFMenu};
+
+end
+
+function schema = customSFMenu(callbackInfo) %#ok<INUSD>
+% Schema function: defines the custom menu
+
+% Initialize schema
+schema                  = sl_container_schema();
+
+% Set menu tag
+schema.tag              = 'MonkeyProof:SFMenu';
+
+% Set menu label
+schema.label            = 'MonkeyProof Utils';
+
+% Initialize Customizers to add
+customizers             = {stateflow.blocks.Customizer()};
 
 % Generate childrenFcns for schema
 schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
