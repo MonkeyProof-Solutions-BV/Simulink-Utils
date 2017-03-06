@@ -7,6 +7,7 @@ classdef Customizer < Customizer
         % Customizing Methods
         schema = matchSizeOfBlocks(callbackInfo)
         schema = showHideBlockName(callbackInfo)
+        schema = createBusObject(callbackInfo)
         
         % Implement Abstract
         setFilters(cm)
