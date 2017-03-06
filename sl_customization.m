@@ -2,11 +2,14 @@
 % Use is subject to the LGPL license.
 
 function sl_customization(cm)
-% Register custom menu in the Simulink Editor's menu bar.
 
+% Register custom menu in the Simulink Editor's menu bar.
 cm.addCustomMenuFcn('Simulink:MenuBar', @getCustomSimulinkMenu);
+
+% Register custom menu in the Simulink context menu.
 cm.addCustomMenuFcn('Simulink:ContextMenu', @getCustomSimulinkContext);
 
+% Add custom filters
 styleguide.Customizer.setFilters(cm);
 blocks.Customizer.setFilters(cm);
 signals.Customizer.setFilters(cm);

@@ -3,19 +3,6 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:SignalGotoFrom', @isOneSignal);
-
-end
-
-function state = isOneSignal(callbackInfo)
-% Check if 1 signal is selected
-
-partH = SLStudio.Utils.partitionSelectionHandles(callbackInfo);
-
-if numel(partH.segments) ~= 1
-    state = 'Disabled';
-else
-    state = 'Enabled';
-end
+cm.addCustomFilterFcn('MonkeyProof:SignalGotoFrom', @Customizer.checkOneSignal);
 
 end

@@ -3,20 +3,7 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:MatchSize', @isBlock);
-cm.addCustomFilterFcn('MonkeyProof:ShowHideName', @isBlock);
-
-end
-
-function state = isBlock(callbackInfo)
-% Check if one or more blocks are selected
-
-partH = SLStudio.Utils.partitionSelectionHandles(callbackInfo);
-
-if numel(partH.blocks) < 1
-    state = 'Disabled';
-else
-    state = 'Enabled';
-end
+cm.addCustomFilterFcn('MonkeyProof:MatchSize', @Customizer.checkBlocks);
+cm.addCustomFilterFcn('MonkeyProof:ShowHideName', @Customizer.checkBlocks);
 
 end

@@ -32,9 +32,16 @@ classdef Customizer < handle
             % Remove the last 'separator'
             childrenFcns(end) = [];
         end
+        
+        % Utilities
+        state = checkBlocks(callbackInfo)
+        state = checkOneBlock(callbackInfo)
+        state = checkOneSignal(callbackInfo)
+        state = checkSignals(callbackInfo)
     end
     
     methods (Static, Abstract)
+        % Function to customize filters
         setFilters(cm)
     end
 end
