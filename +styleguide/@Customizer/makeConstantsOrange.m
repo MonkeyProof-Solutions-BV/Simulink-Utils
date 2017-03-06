@@ -4,10 +4,11 @@
 function schema = makeConstantsOrange(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines makeConstantsOrange menu item
  
-schema             = sl_action_schema;          % Initialize schema
-schema.label       = 'Make Constants Orange';   % Set menu item label
-schema.accelerator = 'CTRL+SHIFT+O';            % Set accelerator/short-cut
-schema.callback    = @makeConstantsOrangeCb;    % Set callback function 
+schema              = sl_action_schema();               % Initialize schema
+schema.tag          = 'MonkeyProof:OrangeConstants';    % Set menu item tag
+schema.label        = 'Make Constants Orange';          % Set menu item label
+schema.accelerator  = 'CTRL+SHIFT+O';                   % Set accelerator/short-cut
+schema.callback     = @makeConstantsOrangeCb;           % Set callback function 
 
 end
 

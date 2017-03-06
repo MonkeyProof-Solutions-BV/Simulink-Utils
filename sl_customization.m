@@ -19,10 +19,13 @@ function schema = customMenu(callbackInfo) %#ok<INUSD>
 % Schema function: defines the custom menu
 
 % Initialize schema
-schema                  = sl_container_schema; 
+schema                  = sl_container_schema();
+
+% Set menu tag
+schema.tag              = 'MonkeyProof:Menu';
 
 % Set menu label
-schema.label            = 'My Menu'; 
+schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
 customizers             = {utils.Customizer(), styleguide.Customizer()};
