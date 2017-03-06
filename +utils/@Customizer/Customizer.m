@@ -4,9 +4,9 @@
 classdef Customizer < Customizer
     
     methods (Static)
-        
         % Customizing Methods
-        schema = matchSizeOfBlocks(callbackInfo)
         
+        schema = matchSizeOfBlocks(callbackInfo)
+        schema = showHideBlockName(callbackInfo)
     end
 end
