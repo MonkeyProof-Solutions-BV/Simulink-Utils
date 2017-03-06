@@ -58,7 +58,7 @@ schema.tag              = 'MonkeyProof:Context';
 schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
-customizers             = {};
+customizers             = {signals.Customizer()};
 
 % Generate childrenFcns for schema
 schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
