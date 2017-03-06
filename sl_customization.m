@@ -30,7 +30,7 @@ schema.tag              = 'MonkeyProof:Menu';
 schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
-customizers             = {utils.Customizer(), styleguide.Customizer()};
+customizers             = {blocks.Customizer(), signals.Customizer(), styleguide.Customizer()};
 
 % Generate childrenFcns for schema
 schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
@@ -58,7 +58,7 @@ schema.tag              = 'MonkeyProof:Context';
 schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
-customizers             = {signals.Customizer()};
+customizers             = {blocks.Customizer(), signals.Customizer()};
 
 % Generate childrenFcns for schema
 schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
