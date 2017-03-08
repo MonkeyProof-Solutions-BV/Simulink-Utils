@@ -12,9 +12,13 @@ cm.addCustomMenuFcn('Simulink:ContextMenu', @getCustomSimulinkContext);
 % Register custom menu in the Stateflow Editor's menu bar.
 cm.addCustomMenuFcn('Stateflow:MenuBar', @getCustomStateflowMenu);
 
+% Register custom menu in the Stateflow Editor's context menu.
+cm.addCustomMenuFcn('Stateflow:ContextMenu', @getCustomStateflowContext);
+
 % Add custom filters
 styleguide.Customizer.setFilters(cm);
 blocks.Customizer.setFilters(cm);
+stateflow.blocks.Customizer.setFilters(cm);
 signals.Customizer.setFilters(cm);
 
 end
@@ -100,5 +104,13 @@ customizers             = {stateflow.blocks.Customizer()};
 
 % Generate childrenFcns for schema
 schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
+
+end
+
+%% Stateflow Context Menu
+function schemaFcns = getCustomStateflowContext(callbackInfo) %#ok<INUSD>
+% Custom menu function: returns schema functions
+
+schemaFcns = {@customSFMenu};
 
 end
