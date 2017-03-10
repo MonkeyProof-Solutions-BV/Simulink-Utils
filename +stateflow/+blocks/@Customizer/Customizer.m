@@ -6,6 +6,7 @@ classdef Customizer < Customizer
     methods (Static)
         % Customizing Methods
         schema = autoConnect(callbackInfo)
+        schema = matchSizeOfBlocks(callbackInfo)
         
         % Implement Abstract
         setFilters(cm)

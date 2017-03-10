@@ -3,7 +3,8 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:AutoConnect', @checkTwoSFBlocks);
+cm.addCustomFilterFcn('MonkeyProof:SF:AutoConnect', @checkTwoSFBlocks);
+cm.addCustomFilterFcn('MonkeyProof:SF:MatchSize', @Customizer.checkSFBlocks);
 
 end
 
