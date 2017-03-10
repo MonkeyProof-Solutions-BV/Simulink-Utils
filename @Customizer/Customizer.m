@@ -35,6 +35,7 @@ classdef Customizer < handle
         
         % Utilities
         state = checkBlocks(callbackInfo)
+        state = checkSFBlocks(callbackInfo)
         state = checkOneBlock(callbackInfo)
         state = checkOneSignal(callbackInfo)
         state = checkSignals(callbackInfo)
