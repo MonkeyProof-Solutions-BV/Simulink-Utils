@@ -6,6 +6,7 @@ classdef Customizer < Customizer
     methods (Static)
         % Customizing Methods
         schema = convertSignalToGoto(callbackInfo)
+        schema = inheritSignalNames(callbackInfo)
         
         % Implement Abstract
         setFilters(cm)
