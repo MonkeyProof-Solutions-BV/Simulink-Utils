@@ -6,6 +6,7 @@ function setFilters(cm)
 cm.addCustomFilterFcn('MonkeyProof:MatchSize', @Customizer.checkBlocks);
 cm.addCustomFilterFcn('MonkeyProof:ShowHideName', @Customizer.checkBlocks);
 cm.addCustomFilterFcn('MonkeyProof:CreateBusObject', @checkCreateBusObject);
+cm.addCustomFilterFcn('MonkeyProof:InheritPortNames', @Customizer.checkOneSubsystem);
 
 end
 

@@ -8,6 +8,7 @@ classdef Customizer < Customizer
         schema = matchSizeOfBlocks(callbackInfo)
         schema = showHideBlockName(callbackInfo)
         schema = createBusObject(callbackInfo)
+        schema = inheritPortNames(callbackInfo)
         
         % Implement Abstract
         setFilters(cm)
