@@ -3,10 +3,10 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:MatchSize', @Customizer.checkBlocks);
-cm.addCustomFilterFcn('MonkeyProof:ShowHideName', @Customizer.checkBlocks);
+cm.addCustomFilterFcn('MonkeyProof:MatchSize', @sl_menu.Customizer.checkBlocks);
+cm.addCustomFilterFcn('MonkeyProof:ShowHideName', @sl_menu.Customizer.checkBlocks);
 cm.addCustomFilterFcn('MonkeyProof:CreateBusObject', @checkCreateBusObject);
-cm.addCustomFilterFcn('MonkeyProof:InheritPortNames', @Customizer.checkOneSubsystem);
+cm.addCustomFilterFcn('MonkeyProof:InheritPortNames', @sl_menu.Customizer.checkOneSubsystem);
 
 end
 
@@ -14,7 +14,7 @@ function state = checkCreateBusObject(callbackInfo)
 % Custom check for MonkeyProof:CreateBusObject menu item
 
 % Check if just one block is selected.
-state = Customizer.checkOneBlock(callbackInfo);
+state = sl_menu.Customizer.checkOneBlock(callbackInfo);
 
 if strcmp(state, 'Enabled')
     % Continue checking.

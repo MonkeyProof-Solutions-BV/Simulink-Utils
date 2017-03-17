@@ -4,7 +4,7 @@
 function setFilters(cm)
 
 cm.addCustomFilterFcn('MonkeyProof:OrangeConstants', @hide);
-cm.addCustomFilterFcn('MonkeyProof:ResetColors', @Customizer.checkBlocks);
+cm.addCustomFilterFcn('MonkeyProof:ResetColors', @sl_menu.Customizer.checkBlocks);
 
 end
 

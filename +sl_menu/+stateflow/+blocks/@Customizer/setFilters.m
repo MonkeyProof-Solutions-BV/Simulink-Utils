@@ -4,7 +4,7 @@
 function setFilters(cm)
 
 cm.addCustomFilterFcn('MonkeyProof:SF:AutoConnect', @checkTwoSFBlocks);
-cm.addCustomFilterFcn('MonkeyProof:SF:MatchSize', @Customizer.checkSFBlocks);
+cm.addCustomFilterFcn('MonkeyProof:SF:MatchSize', @sl_menu.Customizer.checkSFBlocks);
 
 end
 

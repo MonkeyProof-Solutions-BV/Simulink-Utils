@@ -3,6 +3,6 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:SignalGotoFrom', @Customizer.checkOneSignal);
+cm.addCustomFilterFcn('MonkeyProof:SignalGotoFrom', @sl_menu.Customizer.checkOneSignal);
 
 end

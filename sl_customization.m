@@ -16,10 +16,10 @@ cm.addCustomMenuFcn('Stateflow:MenuBar', @getCustomStateflowMenu);
 cm.addCustomMenuFcn('Stateflow:ContextMenu', @getCustomStateflowContext);
 
 % Add custom filters
-styleguide.Customizer.setFilters(cm);
-blocks.Customizer.setFilters(cm);
-stateflow.blocks.Customizer.setFilters(cm);
-signals.Customizer.setFilters(cm);
+sl_menu.styleguide.Customizer.setFilters(cm);
+sl_menu.blocks.Customizer.setFilters(cm);
+sl_menu.stateflow.blocks.Customizer.setFilters(cm);
+sl_menu.signals.Customizer.setFilters(cm);
 
 end
 
@@ -44,10 +44,10 @@ schema.tag              = 'MonkeyProof:Menu';
 schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
-customizers             = {blocks.Customizer(), signals.Customizer(), styleguide.Customizer()};
+customizers             = {sl_menu.blocks.Customizer(), sl_menu.signals.Customizer(), sl_menu.styleguide.Customizer()};
 
 % Generate childrenFcns for schema
-schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
+schema.childrenFcns     = sl_menu.Customizer.getCustomizeMethods(customizers);
 
 end
 
@@ -72,10 +72,10 @@ schema.tag              = 'MonkeyProof:Context';
 schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
-customizers             = {blocks.Customizer(), signals.Customizer()};
+customizers             = {sl_menu.blocks.Customizer(), sl_menu.signals.Customizer()};
 
 % Generate childrenFcns for schema
-schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
+schema.childrenFcns     = sl_menu.Customizer.getCustomizeMethods(customizers);
 
 end
 
@@ -100,10 +100,10 @@ schema.tag              = 'MonkeyProof:SFMenu';
 schema.label            = 'MonkeyProof Utils';
 
 % Initialize Customizers to add
-customizers             = {stateflow.blocks.Customizer()};
+customizers             = {sl_menu.stateflow.blocks.Customizer()};
 
 % Generate childrenFcns for schema
-schema.childrenFcns     = Customizer.getCustomizeMethods(customizers);
+schema.childrenFcns     = sl_menu.Customizer.getCustomizeMethods(customizers);
 
 end
 

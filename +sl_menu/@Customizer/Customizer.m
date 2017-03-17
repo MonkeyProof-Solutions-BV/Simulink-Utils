@@ -20,7 +20,7 @@ classdef Customizer < handle
                 
                 % Retrieve all methods implemented in the customizer, except for
                 % constructor 'Customizer'
-                methodNames         = setdiff(methods(customizers{iCustomizer}), [methods(mfilename); classNameEnd]);
+                methodNames         = setdiff(methods(customizers{iCustomizer}), [methods(mfilename('class')); classNameEnd]);
                 
                 % Create function handles for each method
                 customizerFunctions = cellfun(@(c) str2func([className '.' c]), methodNames, 'UniformOutput', false);
