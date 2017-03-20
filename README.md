@@ -14,4 +14,4 @@ An example application and more details can be found in our blog [here](http://m
   
   
   
-Documentation on the included features and on adding your own customizations can be found on the project [wiki](../../wiki).
+Documentation on the included features and on adding your own customizations can be found on the project [wiki](./wikis/home).
