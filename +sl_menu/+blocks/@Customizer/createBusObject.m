@@ -4,10 +4,10 @@
 function schema = createBusObject(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines createBusObject menu item
 
-schema              = sl_action_schema();               % Initialize schema
-schema.tag          = 'SimulinkUtils:CreateBusObject';  % Set menu item tag
-schema.label        = 'Create bus object';              % Set menu item label
-schema.callback     = @createBusObjectCb;               % Set callback function
+schema              = sl_action_schema();                           % Initialize schema
+schema.tag          = 'SimulinkUtils:CreateBusObject';              % Set menu item tag
+schema.label        = 'Create bus object from BusCreator block';    % Set menu item label
+schema.callback     = @createBusObjectCb;                           % Set callback function
 
 end
 
