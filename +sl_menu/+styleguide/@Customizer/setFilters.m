@@ -3,8 +3,8 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:OrangeConstants', @hide);
-cm.addCustomFilterFcn('MonkeyProof:ResetColors', @sl_menu.Customizer.checkBlocks);
+cm.addCustomFilterFcn('SimulinkUtils:OrangeConstants', @hide);
+cm.addCustomFilterFcn('SimulinkUtils:ResetColors', @sl_menu.Customizer.checkBlocks);
 
 end
 

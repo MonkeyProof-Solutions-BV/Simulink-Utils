@@ -4,10 +4,10 @@
 function schema = resetColors(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines resetColors menu item
 
-schema              = sl_action_schema();           % Initialize schema
-schema.tag          = 'MonkeyProof:ResetColors';    % Set menu item tag
-schema.label        = 'Reset block colors';         % Set menu item label
-schema.callback     = @resetColorsCb;               % Set callback function
+schema          = sl_action_schema();           % Initialize schema
+schema.tag      = 'SimulinkUtils:ResetColors';  % Set menu item tag
+schema.label    = 'Reset block colors';         % Set menu item label
+schema.callback = @resetColorsCb;               % Set callback function
 
 end
 

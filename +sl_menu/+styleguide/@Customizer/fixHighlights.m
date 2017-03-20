@@ -4,10 +4,10 @@
 function schema = fixHighlights(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines fixHighlights menu item
 
-schema              = sl_action_schema();           % Initialize schema
-schema.tag          = 'MonkeyProof:FixHighlights';  % Set menu item tag
-schema.label        = 'Fix persistent highlights';  % Set menu item label
-schema.callback     = @fixHighlightsCb;             % Set callback function
+schema          = sl_action_schema();               % Initialize schema
+schema.tag      = 'SimulinkUtils:FixHighlights';    % Set menu item tag
+schema.label    = 'Fix persistent highlights';      % Set menu item label
+schema.callback = @fixHighlightsCb;                 % Set callback function
 
 end
 

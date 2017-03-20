@@ -3,15 +3,15 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:MatchSize', @sl_menu.Customizer.checkBlocks);
-cm.addCustomFilterFcn('MonkeyProof:ShowHideName', @sl_menu.Customizer.checkBlocks);
-cm.addCustomFilterFcn('MonkeyProof:CreateBusObject', @checkCreateBusObject);
-cm.addCustomFilterFcn('MonkeyProof:InheritPortNames', @sl_menu.Customizer.checkOneSubsystem);
+cm.addCustomFilterFcn('SimulinkUtils:MatchSize', @sl_menu.Customizer.checkBlocks);
+cm.addCustomFilterFcn('SimulinkUtils:ShowHideName', @sl_menu.Customizer.checkBlocks);
+cm.addCustomFilterFcn('SimulinkUtils:CreateBusObject', @checkCreateBusObject);
+cm.addCustomFilterFcn('SimulinkUtils:InheritPortNames', @sl_menu.Customizer.checkOneSubsystem);
 
 end
 
 function state = checkCreateBusObject(callbackInfo)
-% Custom check for MonkeyProof:CreateBusObject menu item
+% Custom check for SimulinkUtils:CreateBusObject menu item
 
 % Check if just one block is selected.
 state = sl_menu.Customizer.checkOneBlock(callbackInfo);

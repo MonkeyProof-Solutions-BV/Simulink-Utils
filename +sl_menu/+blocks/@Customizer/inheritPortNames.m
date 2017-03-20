@@ -5,7 +5,7 @@ function schema = inheritPortNames(callbackInfo) %#ok<INUSD> callbackInfo might 
 % Schema function: defines inheritPortNames menu item
 
 schema              = sl_action_schema();               % Initialize schema
-schema.tag          = 'MonkeyProof:InheritPortNames';   % Set menu item tag
+schema.tag          = 'SimulinkUtils:InheritPortNames'; % Set menu item tag
 schema.label        = 'Inherit subsystem port names';   % Set menu item label
 schema.accelerator  = 'CTRL+ALT+G';                     % Set accelerator/short-cut
 schema.callback     = @inheritPortNamesCb;              % Set callback function

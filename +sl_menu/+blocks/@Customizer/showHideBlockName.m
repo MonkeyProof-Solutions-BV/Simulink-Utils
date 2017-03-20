@@ -5,7 +5,7 @@ function schema = showHideBlockName(callbackInfo) %#ok<INUSD> callbackInfo might
 % Schema function: defines showHideBlockName menu item
 
 schema              = sl_action_schema();           % Initialize schema
-schema.tag          = 'MonkeyProof:ShowHideName';   % Set menu item tag
+schema.tag          = 'SimulinkUtils:ShowHideName'; % Set menu item tag
 schema.label        = 'Show/hide block name';       % Set menu item label
 schema.accelerator  = 'CTRL+ALT+N';                 % Set accelerator/short-cut
 schema.callback     = @showHideBlockNameCb;         % Set callback function

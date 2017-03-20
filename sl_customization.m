@@ -38,10 +38,10 @@ function schema = customMenu(callbackInfo) %#ok<INUSD>
 schema                  = sl_container_schema();
 
 % Set menu tag
-schema.tag              = 'MonkeyProof:Menu';
+schema.tag              = 'SimulinkUtils:Menu';
 
 % Set menu label
-schema.label            = 'MonkeyProof Utils';
+schema.label            = 'Utils';
 
 % Initialize Customizers to add
 customizers             = {sl_menu.blocks.Customizer(), sl_menu.signals.Customizer(), sl_menu.styleguide.Customizer()};
@@ -66,10 +66,10 @@ function schema = customContext(callbackInfo) %#ok<INUSD>
 schema                  = sl_container_schema();
 
 % Set menu tag
-schema.tag              = 'MonkeyProof:Context';
+schema.tag              = 'SimulinkUtils:Context';
 
 % Set menu label
-schema.label            = 'MonkeyProof Utils';
+schema.label            = 'Utils';
 
 % Initialize Customizers to add
 customizers             = {sl_menu.blocks.Customizer(), sl_menu.signals.Customizer()};
@@ -94,10 +94,10 @@ function schema = customSFMenu(callbackInfo) %#ok<INUSD>
 schema                  = sl_container_schema();
 
 % Set menu tag
-schema.tag              = 'MonkeyProof:SFMenu';
+schema.tag              = 'SimulinkUtils:SFMenu';
 
 % Set menu label
-schema.label            = 'MonkeyProof Utils';
+schema.label            = 'Utils';
 
 % Initialize Customizers to add
 customizers             = {sl_menu.stateflow.blocks.Customizer()};

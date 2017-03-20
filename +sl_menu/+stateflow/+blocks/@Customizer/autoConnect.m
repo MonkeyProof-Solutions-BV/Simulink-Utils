@@ -4,10 +4,10 @@
 function schema = autoConnect(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines createBusObject menu item
 
-schema              = sl_action_schema();           % Initialize schema
-schema.tag          = 'MonkeyProof:SF:AutoConnect'; % Set menu item tag
-schema.label        = 'Auto connect';               % Set menu item label
-schema.callback     = @autoConnectCb;               % Set callback function
+schema          = sl_action_schema();               % Initialize schema
+schema.tag      = 'SimulinkUtils:SF:AutoConnect';   % Set menu item tag
+schema.label    = 'Auto connect';                   % Set menu item label
+schema.callback = @autoConnectCb;                   % Set callback function
 
 end
 

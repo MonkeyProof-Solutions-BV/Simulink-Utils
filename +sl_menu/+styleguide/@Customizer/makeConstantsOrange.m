@@ -5,7 +5,7 @@ function schema = makeConstantsOrange(callbackInfo) %#ok<INUSD> callbackInfo mig
 % Schema function: defines makeConstantsOrange menu item
  
 schema              = sl_action_schema();               % Initialize schema
-schema.tag          = 'MonkeyProof:OrangeConstants';    % Set menu item tag
+schema.tag          = 'SimulinkUtils:OrangeConstants';  % Set menu item tag
 schema.label        = 'Make Constants Orange';          % Set menu item label
 schema.accelerator  = 'CTRL+SHIFT+O';                   % Set accelerator/short-cut
 schema.callback     = @makeConstantsOrangeCb;           % Set callback function 

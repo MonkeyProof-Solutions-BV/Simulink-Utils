@@ -4,10 +4,10 @@
 function schema = inheritSignalNames(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines inheritSignalNames menu item
 
-schema              = sl_action_schema();               % Initialize schema
-schema.tag          = 'MonkeyProof:InheritSignalNames'; % Set menu item tag
-schema.label        = 'Propagate signal names';         % Set menu item label
-schema.callback     = @inheritSignalNamesCb;            % Set callback function
+schema          = sl_action_schema();                   % Initialize schema
+schema.tag      = 'SimulinkUtils:InheritSignalNames';   % Set menu item tag
+schema.label    = 'Propagate signal names';             % Set menu item label
+schema.callback = @inheritSignalNamesCb;                % Set callback function
 
 end
 
@@ -18,7 +18,7 @@ sys         = gcs;
 allLines    = find_system(sys, 'FollowLinks', 'on', 'Findall', 'on', 'LookUnderMasks', 'all', 'Type', 'line', 'LineParent', -1);
 
 if isempty(allLines)
-    error('monkeyproof:converSignalToGoto:NoSignalSelected', 'No signal line selected.');
+    error('simulinkUtils:converSignalToGoto:NoSignalSelected', 'No signal line selected.');
 end
 
 for iLines = 1 : numel(allLines)

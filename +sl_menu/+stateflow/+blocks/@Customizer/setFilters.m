@@ -3,8 +3,8 @@
 
 function setFilters(cm)
 
-cm.addCustomFilterFcn('MonkeyProof:SF:AutoConnect', @checkTwoSFBlocks);
-cm.addCustomFilterFcn('MonkeyProof:SF:MatchSize', @sl_menu.Customizer.checkSFBlocks);
+cm.addCustomFilterFcn('SimulinkUtils:SF:AutoConnect', @checkTwoSFBlocks);
+cm.addCustomFilterFcn('SimulinkUtils:SF:MatchSize', @sl_menu.Customizer.checkSFBlocks);
 
 end
 

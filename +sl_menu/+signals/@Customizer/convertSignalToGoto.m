@@ -4,10 +4,10 @@
 function schema = convertSignalToGoto(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines convertSignalToGoto menu item
 
-schema              = sl_action_schema();               % Initialize schema
-schema.tag          = 'MonkeyProof:SignalGotoFrom';     % Set menu item tag
-schema.label        = 'Convert signal to Goto-From';    % Set menu item label
-schema.callback     = @convertSignalToGotoCb;           % Set callback function
+schema          = sl_action_schema();               % Initialize schema
+schema.tag      = 'SimulinkUtils:SignalGotoFrom';   % Set menu item tag
+schema.label    = 'Convert signal to Goto-From';    % Set menu item label
+schema.callback = @convertSignalToGotoCb;           % Set callback function
 
 end
 
@@ -18,7 +18,7 @@ sys             = gcs;
 selectedLines   = find_system(sys, 'FollowLinks', 'on', 'Findall', 'on', 'LookUnderMasks', 'all', 'Type', 'line', 'Selected', 'on', 'LineParent', -1);
 
 if isempty(selectedLines)
-    error('monkeyproof:converSignalToGoto:NoSignalSelected', 'No signal line selected.');
+    error('simulinkUtils:converSignalToGoto:NoSignalSelected', 'No signal line selected.');
 end
 
 selectedLine    = selectedLines(1);
@@ -36,7 +36,7 @@ else
     tag = tag{1};
     
     if isempty(tag)
-        error('monkeyproof:converSignalToGoto:NoTag', 'No goto tag specified.');
+        error('simulinkUtils:converSignalToGoto:NoTag', 'No goto tag specified.');
     end
 end
 

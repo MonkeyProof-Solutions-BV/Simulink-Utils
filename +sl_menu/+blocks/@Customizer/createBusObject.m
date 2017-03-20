@@ -5,7 +5,7 @@ function schema = createBusObject(callbackInfo) %#ok<INUSD> callbackInfo might b
 % Schema function: defines createBusObject menu item
 
 schema              = sl_action_schema();               % Initialize schema
-schema.tag          = 'MonkeyProof:CreateBusObject';    % Set menu item tag
+schema.tag          = 'SimulinkUtils:CreateBusObject';  % Set menu item tag
 schema.label        = 'Create bus object';              % Set menu item label
 schema.callback     = @createBusObjectCb;               % Set callback function
 
@@ -28,7 +28,7 @@ if ~isempty(newName)
     catch ME
         % no valid name provided
         warning (ME.message);
-        warning ('monkeyproof:createBusObject:CreateError', 'Could not create bus with name "%s", renamed to "%s".', newName, busInfo.busName);
+        warning ('simulinkUtils:createBusObject:CreateError', 'Could not create bus with name "%s", renamed to "%s".', newName, busInfo.busName);
         newName = busInfo.busName;
     end
 else
