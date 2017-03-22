@@ -2,7 +2,7 @@
 
 The Simulink Utils App provides a number of utility tools that enhance the Simulink experience. It is intended to
 
-* add shotcut keys to frequently used features,
+* add shortcut keys to frequently used features,
 * automate repetitive, generic or labor intensive tasks,
 * add features that are not available in default Simulink  
 
