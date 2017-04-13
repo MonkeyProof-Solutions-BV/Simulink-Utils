@@ -12,6 +12,7 @@ schema.label    = 'Utils';                  % Set menu label
 customizers = {
     sl_menu.blocks.Customizer()
     sl_menu.signals.Customizer()
+    sl_menu.generation.Customizer()
     }';
 
 % Generate childrenFcns for schema
