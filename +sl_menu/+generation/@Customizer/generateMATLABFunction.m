@@ -38,6 +38,7 @@ while ~success
     end
 end
 
+% obtain the created object
 ch = mdl.find('-isa','Stateflow.EMChart', 'Path', [gcs '/' tryName]);
 
 % find selected unconnected line segments
@@ -52,6 +53,7 @@ srcH    = unique(cat(1, portH{srcIdx, 1}));
 destH   = destH(destH > 0);
 srcH    = srcH(srcH > 0);
 
+% determine input and output names for ports
 inputNames = cell(1, numel(srcH));
 
 for iInput = 1 : numel(srcH)
@@ -69,6 +71,7 @@ end
 inputNames  = genvarname(inputNames); %#ok<DEPGENAM> backwards compatibility
 outputNames = genvarname(outputNames); %#ok<DEPGENAM> backwards compatibility
 
+% create function declaration string
 functionName = 'fcn';
 
 switch numel(outputNames)
@@ -97,6 +100,46 @@ switch numel(inputNames)
         inputString    = sprintf('(...\n%s%s ...\n    )\n', inputs, lastInput);
 end
 
+% set function declaration string to created block
 ch.set('Script', ['function ', outputString, functionName, inputString '%#codegen']);
+
+% connect ports to created block
+portHandles = get_param([gcs '/' tryName], 'PortHandles');
+
+for iSrc = 1 : numel(srcH)
+    % loop over input ports and connect with line
+    lineH       = get(srcH(iSrc), 'Line');
+    linePortH   = get(lineH, 'DstPortHandle');
+    
+    if numel(linePortH) > 1
+        % branched line: connect to the first unconnected child
+        lineChldH   = get(lineH, 'LineChildren');
+        linePortH   = get(lineChldH, 'DstPortHandle');
+        I           = find(cellfun(@(c) c < 0, linePortH), 1);
+        lineH       = lineChldH(I);
+    end
+    
+    % remove the current line and add a new one
+    delete_line(lineH)
+    add_line(gcs, srcH(iSrc), portHandles.Inport(iSrc), 'autorouting', 'on');
+end
+
+for iDst = 1 : numel(destH)
+    % loop over output ports and connect with line
+    lineH       = get(destH(iDst), 'Line');
+    linePortH   = get(lineH, 'SrcPortHandle');
+    
+    if numel(linePortH) > 1
+        % branched line: connect to the first unconnected child
+        lineChldH   = get(lineH, 'LineChildren');
+        linePortH   = get(lineChldH, 'SrcPortHandle');
+        I           = find(cellfun(@(c) c < 0, linePortH), 1);
+        lineH       = lineChldH(I);
+    end
+    
+    % remove the current line and add a new one
+    delete_line(lineH)
+    add_line(gcs, portHandles.Outport(iDst), destH(iDst), 'autorouting', 'on');
+end
 
 end
