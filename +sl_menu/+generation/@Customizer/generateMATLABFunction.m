@@ -4,16 +4,17 @@
 function schema = generateMATLABFunction(callbackInfo) %#ok<INUSD> callbackInfo might be used in a later stadium
 % Schema function: defines generateMATLABFunction menu item
 
-schema              = sl_action_schema();                       % Initialize schema
-schema.tag          = 'SimulinkUtils:GenerateMATLABFunction';   % Set menu item tag
-schema.label        = 'Generate MATLAB Function block';         % Set menu item label
-schema.callback     = @generateMATLABFunctionCb;                % Set callback function
+schema          = sl_action_schema();                       % Initialize schema
+schema.tag      = 'SimulinkUtils:GenerateMATLABFunction';   % Set menu item tag
+schema.label    = 'Generate MATLAB Function block';         % Set menu item label
+schema.callback = @generateMATLABFunctionCb;                % Set callback function
 
 end
 
-function generateMATLABFunctionCb(callbackInfo) %#ok<INUSD>
+function generateMATLABFunctionCb(callbackInfo)
 % Callback function: createBusObject menu item
 
+% try to create Matlab Function block
 mdl = sfroot();
 load_system('eml_lib');
 
@@ -39,8 +40,35 @@ end
 
 ch = mdl.find('-isa','Stateflow.EMChart', 'Path', [gcs '/' tryName]);
 
-inputNames = {'myInput', 'otherInput', 'thirdInput'};
-outputNames = {'oneOut', 'two', 'thrd'};
+% find selected unconnected line segments
+partH = SLStudio.Utils.partitionSelectionHandles(callbackInfo);
+portH = get(partH.segments, {'SrcPortHandle', 'DstPortHandle'});
+
+destIdx = cellfun(@(c) any(eq(c, -1)), portH(:, 1));
+srcIdx  = cellfun(@(c) any(eq(c, -1)), portH(:, 2));
+
+destH   = unique(cat(1, portH{destIdx, 2}));
+srcH    = unique(cat(1, portH{srcIdx, 1}));
+destH   = destH(destH > 0);
+srcH    = srcH(srcH > 0);
+
+inputNames = cell(1, numel(srcH));
+
+for iInput = 1 : numel(srcH)
+    name = get(srcH(iInput), 'Name');
+    inputNames{iInput} = name;
+end
+
+outputNames = cell(1, numel(destH));
+
+for iOutput = 1 : numel(destH)
+    name = get(destH(iOutput), 'Name');
+    outputNames{iOutput} = name;
+end
+
+inputNames  = genvarname(inputNames); %#ok<DEPGENAM> backwards compatibility
+outputNames = genvarname(outputNames); %#ok<DEPGENAM> backwards compatibility
+
 functionName = 'fcn';
 
 switch numel(outputNames)
@@ -48,7 +76,7 @@ switch numel(outputNames)
         outputString = '';
         
     case 1
-        outputString = outputNames{1};
+        outputString = sprintf('%s = ', outputNames{1});
         
     otherwise
         outputs         = sprintf('    %s, ...\n', outputNames{1:end-1});
