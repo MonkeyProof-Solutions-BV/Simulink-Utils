@@ -6,7 +6,10 @@ function state = checkOneSignal(callbackInfo)
 
 partH = SLStudio.Utils.partitionSelectionHandles(callbackInfo);
 
-if numel(partH.segments) ~= 1
+segments = partH.segments;
+segments = segments(strcmp(get(segments, 'SegmentType'), 'trunk'));
+
+if numel(segments) ~= 1
     state = 'Disabled';
 else
     state = 'Enabled';
