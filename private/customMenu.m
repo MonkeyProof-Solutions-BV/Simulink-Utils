@@ -13,6 +13,7 @@ customizers = {
     sl_menu.blocks.Customizer()
     sl_menu.signals.Customizer()
     sl_menu.styleguide.Customizer()
+    sl_menu.generation.Customizer()
     }';
 
 % Generate childrenFcns for schema
