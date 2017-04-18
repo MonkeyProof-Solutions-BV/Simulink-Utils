@@ -23,6 +23,11 @@ end
 
 selectedLine    = selectedLines(1);
 sourcePort      = get(selectedLine, 'SrcPortHandle');
+
+if sourcePort < 0
+    error('simulinkUtils:converSignalToGoto:UnconnectedSignalSelected', 'Cannot convert unconnected signals.');
+end
+
 destPorts       = get(selectedLine, 'DstPortHandle');
 
 % get tag for goto-from blocks
@@ -63,12 +68,15 @@ add_line(sys, sourcePort, ph.Inport, 'autorouting', 'on');
 
 % create from(s) and connect destinations
 for iDst = 1 : numel(destPorts)
-    pos     = get(destPorts(iDst), 'Position');
-    start   = pos + [-150 -10];
-    h       = add_block('simulink/Signal Routing/From', [sys '/' genvarname([newTag 'From' sprintf('%d', iDst)], currentBlockNames)], 'Position', [start, start + [100, 20]]);
-    set(h, 'GotoTag', newTag, 'ShowName', 'off');
-    ph      = get(h, 'PortHandles');
-    add_line(sys, ph.Outport, destPorts(iDst), 'autorouting', 'on');
+    % skip unconnected lines
+    if destPorts(iDst) > 0
+        pos     = get(destPorts(iDst), 'Position');
+        start   = pos + [-150 -10];
+        h       = add_block('simulink/Signal Routing/From', [sys '/' genvarname([newTag 'From' sprintf('%d', iDst)], currentBlockNames)], 'Position', [start, start + [100, 20]]);
+        set(h, 'GotoTag', newTag, 'ShowName', 'off');
+        ph      = get(h, 'PortHandles');
+        add_line(sys, ph.Outport, destPorts(iDst), 'autorouting', 'on');
+    end
 end
 
 end
